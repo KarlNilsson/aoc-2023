@@ -7,30 +7,19 @@ const GameData = {
 } as const;
 
 const gameIsValid = (gameData: string) => {
-  const redData = gameData.matchAll(/(\d+) red/g);
-  for (const redPoint of redData) {
-    const redValue = parseInt(redPoint[1], 10);
-    if (redValue > GameData.red) {
+  const diceRolls = gameData.matchAll(/(\d+) (red|green|blue)/g);
+  for (const die of diceRolls) {
+    const value = parseInt(die[1], 10);
+    if (die[2] === "red" && value > GameData.red) {
+      return false;
+    }
+    if (die[2] === "green" && value > GameData.green) {
+      return false;
+    }
+    if (die[2] === "blue" && value > GameData.blue) {
       return false;
     }
   }
-
-  const greenData = gameData.matchAll(/(\d+) green/g);
-  for (const greenPoint of greenData) {
-    const greenValue = parseInt(greenPoint[1], 10);
-    if (greenValue > GameData.green) {
-      return false;
-    }
-  }
-
-  const blueData = gameData.matchAll(/(\d+) blue/g);
-  for (const bluePoint of blueData) {
-    const blueValue = parseInt(bluePoint[1], 10);
-    if (blueValue > GameData.blue) {
-      return false;
-    }
-  }
-
   return true;
 };
 

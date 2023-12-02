@@ -5,22 +5,18 @@ const minNumDieForGame = (gameData: string): [number, number, number] => {
   let greenMin = 0;
   let blueMin = 0;
 
-  const redData = gameData.matchAll(/(\d+) red/g);
-  for (const redPoint of redData) {
-    const redValue = parseInt(redPoint[1], 10);
-    redMin = Math.max(redMin, redValue);
-  }
-
-  const greenData = gameData.matchAll(/(\d+) green/g);
-  for (const greenPoint of greenData) {
-    const greenValue = parseInt(greenPoint[1], 10);
-    greenMin = Math.max(greenMin, greenValue);
-  }
-
-  const blueData = gameData.matchAll(/(\d+) blue/g);
-  for (const bluePoint of blueData) {
-    const blueValue = parseInt(bluePoint[1], 10);
-    blueMin = Math.max(blueMin, blueValue);
+  const games = gameData.matchAll(/(\d+) (red|green|blue)/g);
+  for (const game of games) {
+    const value = parseInt(game[1], 10);
+    if (game[2] === "red") {
+      redMin = Math.max(redMin, value);
+    }
+    if (game[2] === "green") {
+      greenMin = Math.max(greenMin, value);
+    }
+    if (game[2] === "blue") {
+      blueMin = Math.max(blueMin, value);
+    }
   }
 
   return [redMin, greenMin, blueMin];
