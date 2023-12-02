@@ -34,11 +34,11 @@ const Task = async (inputFile: string, measureTiming: boolean = false) => {
   const validGames = dataLines.filter(gameIsValid);
 
   const gameIds = validGames.map((game) => {
-    const gameMatch = game.match(/\d+/);
-    if (gameMatch == null) {
+    const gameId = game.match(/\d+/);
+    if (gameId == null) {
       throw new Error();
     }
-    return parseInt(gameMatch[0], 10);
+    return parseInt(gameId[0], 10);
   });
 
   const result = gameIds.reduce((gameId, acc) => gameId + acc, 0);
