@@ -3,5 +3,6 @@
   "github.copilot.enable": {
     "*": false,
     "typescript": false
-  }
+  },
+  "files.insertFinalNewline": false
 }
