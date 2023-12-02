@@ -1,4 +1,4 @@
-import { readFile } from "fs/promises";
+import { readFile } from 'fs/promises';
 
 const GameData = {
   red: 12,
@@ -10,13 +10,13 @@ const gameIsValid = (gameData: string) => {
   const diceRolls = gameData.matchAll(/(\d+) (red|green|blue)/g);
   for (const die of diceRolls) {
     const value = parseInt(die[1], 10);
-    if (die[2] === "red" && value > GameData.red) {
+    if (die[2] === 'red' && value > GameData.red) {
       return false;
     }
-    if (die[2] === "green" && value > GameData.green) {
+    if (die[2] === 'green' && value > GameData.green) {
       return false;
     }
-    if (die[2] === "blue" && value > GameData.blue) {
+    if (die[2] === 'blue' && value > GameData.blue) {
       return false;
     }
   }
@@ -25,11 +25,11 @@ const gameIsValid = (gameData: string) => {
 
 const Task = async (inputFile: string, measureTiming: boolean = false) => {
   const data = await readFile(`${__dirname}/../../../input/02/${inputFile}`, {
-    encoding: "utf8",
+    encoding: 'utf8',
   });
 
   const start = performance.now();
-  const dataLines = data.split("\n");
+  const dataLines = data.split('\n');
 
   const validGames = dataLines.filter(gameIsValid);
 

@@ -1,4 +1,4 @@
-import { readFile } from "fs/promises";
+import { readFile } from 'fs/promises';
 
 const minNumDieForGame = (gameData: string): [number, number, number] => {
   let redMin = 0;
@@ -8,13 +8,13 @@ const minNumDieForGame = (gameData: string): [number, number, number] => {
   const games = gameData.matchAll(/(\d+) (red|green|blue)/g);
   for (const game of games) {
     const value = parseInt(game[1], 10);
-    if (game[2] === "red") {
+    if (game[2] === 'red') {
       redMin = Math.max(redMin, value);
     }
-    if (game[2] === "green") {
+    if (game[2] === 'green') {
       greenMin = Math.max(greenMin, value);
     }
-    if (game[2] === "blue") {
+    if (game[2] === 'blue') {
       blueMin = Math.max(blueMin, value);
     }
   }
@@ -24,11 +24,11 @@ const minNumDieForGame = (gameData: string): [number, number, number] => {
 
 const Task = async (inputFile: string, measureTiming: boolean = false) => {
   const data = await readFile(`${__dirname}/../../../input/02/${inputFile}`, {
-    encoding: "utf8",
+    encoding: 'utf8',
   });
 
   const start = performance.now();
-  const dataLines = data.split("\n");
+  const dataLines = data.split('\n');
 
   const minDiePerGame = dataLines.map(minNumDieForGame);
   const multipliedDieValues = minDiePerGame.map(
