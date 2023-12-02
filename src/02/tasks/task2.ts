@@ -31,10 +31,7 @@ const Task = async (inputFile: string, measureTiming: boolean = false) => {
   const dataLines = data.split('\n');
 
   const minDiePerGame = dataLines.map(minNumDieForGame);
-  const multipliedDieValues = minDiePerGame.map(
-    ([red, green, blue]) => red * green * blue
-  );
-  const result = multipliedDieValues.reduce((val, acc) => val + acc, 0);
+  const result = minDiePerGame.reduce((acc, [r, g, b]) => acc + r * g * b, 0);
 
   if (measureTiming) {
     const end = performance.now();
