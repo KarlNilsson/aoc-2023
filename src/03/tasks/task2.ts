@@ -56,7 +56,6 @@ const Task = async (inputFile: string, measureTiming: boolean = false) => {
 
   engineLines.forEach((engineLine, idx) => {
     engineLine.symbols.forEach((symbolIndex) => {
-      console.log(`[${idx}], [${symbolIndex}]`);
       checkSurroundingNumbers(idx, symbolIndex);
     });
   });
