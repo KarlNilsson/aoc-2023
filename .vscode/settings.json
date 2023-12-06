@@ -2,7 +2,8 @@
   "github.copilot.editor.enableCodeActions": false,
   "github.copilot.enable": {
     "*": false,
-    "typescript": true
+    "typescript": false,
   },
-  "files.insertFinalNewline": false
+  "files.insertFinalNewline": false,
+  "editor.formatOnSave": true
 }
