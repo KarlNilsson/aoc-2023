@@ -18,7 +18,6 @@ export const solveRace = (race: Race) => {
     }
   }
 
-  const result =
-    2 * (bestPossibleTime - currentMin + 1) - ((race.time + 1) % 2);
+  const result = 2 * (bestPossibleTime - currentMax) - ((race.time + 1) % 2);
   return result;
 };
