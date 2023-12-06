@@ -13,7 +13,6 @@ export const solveRace = (race: Race) => {
     const distance = Math.abs((race.time - currentTime) * currentTime);
     if (distance > race.recordDistance) {
       currentMax = currentTime - 1;
-      // console.log(`winning time: ${currentTime}`);
     } else {
       currentMin = currentTime + 1;
     }
