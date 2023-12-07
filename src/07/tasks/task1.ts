@@ -34,7 +34,7 @@ const setScoreToHand = (hand: Hand): ScoredHand => {
   }
 
   if (values.length === 2) {
-    if (values.find((value) => value === 4)) {
+    if (values.find((value) => value === 1)) {
       return { ...hand, score: Score.FourOfAKind };
     }
     return { ...hand, score: Score.FullHouse };
